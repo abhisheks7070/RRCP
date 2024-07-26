@@ -6,6 +6,7 @@ const SinglePlayer = () => {
 
 
     const [results, setResults] = useState([])
+    const [wait, setWait] = useState(false)
     const [pname1, setpname1] = useState("guest")
     const [total, setTotal] = useState(50)
     const [play, setPlay] = useState(false)
@@ -22,12 +23,14 @@ const SinglePlayer = () => {
         event.preventDefault();
         setPoint([])
         setNewGame(false)
+        setWait(false)
     }
 
     const handleClick = async () => {
         setPlay(!play);
         setResults(res);
         setShow(false);
+        setWait(true);
     }
 
     const handlePoint = async (name) => {
@@ -168,6 +171,12 @@ const SinglePlayer = () => {
                             PLAY
                         </button>}
 
+                           {(show == false && wait == true && results[0] != "POLICE005") && <div className='p-1 md:px-3 mx-auto absolute bottom-[18vh] right-[25vw] md:bottom-[30vh] md:right-[15vw]'>
+                                Wait...
+                            </div>}
+                           {(show == false && wait == true && results[0] == "POLICE005") && <div className='p-1 md:px-3 mx-auto absolute bottom-[18vh] right-[25vw] md:bottom-[30vh] md:right-[15vw]'>
+                                Choose...
+                            </div>}
                         {(show == false && results[0] == "POLICE005") && <>{results.map((result, i) => {
                             // console.log(results)
 
@@ -183,8 +192,8 @@ const SinglePlayer = () => {
                             if (i == 3) {
                                 return <button className=' bg-red-300 p-1 md:p-2 border-solid border-2 border-black absolute top-[13vh] right-3 md:right-2 md:top-[29vh]' onClick={() => { handlePoint(result) }}>{result.split("0")[0] == "RAJA" || result.split("0")[0] == "POLICE" ? result.split("0")[0] : "PAKAD"}</button>
                             }
+                            })}
 
-                        })}
                         </>}
 
                         {(show == false && results[0] != "POLICE005") && <>{results.map((result, i) => {
