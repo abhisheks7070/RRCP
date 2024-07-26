@@ -140,8 +140,8 @@ const SinglePlayer = () => {
         <div>
             <div className='flex flex-col px-10 py-5'>
 
-                <input className='p-2 w-[80vw] border-solid border-2 border-black' type="text" value={pname1} onChange={(e) => { setpname1(e.target.value) }} />
-                <input className='p-2 w-[80vw] border-solid border-2 border-black' type="text" value={total} onChange={(e) => { setTotal(e.target.value) }} />
+                <input className='p-2 w-[80vw] border-solid border-2 border-black' placeholder='Player Name' type="text" value={pname1} onChange={(e) => { setpname1(e.target.value) }} />
+                <input className='p-2 w-[80vw] border-solid border-2 border-black' placeholder='Enter maximum points to win' type="text" value={total} onChange={(e) => { setTotal(e.target.value) }} />
                 <button className='p-2 mt-1 text-white text-l bg-red-700 w-[30vw] border-solid border-2 border-black' onClick={handleReset}>reset</button>
             </div>
             <div className='flex flex-col md:flex-row  gap-5 justify-around items-center bg-gray-300'>
