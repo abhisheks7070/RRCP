@@ -117,17 +117,23 @@ const SinglePlayer = () => {
     let res = [name, P1, P2, P3]
 
     const Winner = () => {
+        let win = []
         for (let i = 0; i <= 3; i++) {
             if (sum[i] >= total) {
-
                 setNewGame(true)
-                return (
-                    <div className='text-xl font-bold text-blue-400'>
-                        The WINNER is {players[i]}
-                    </div>
-                )
+                win.push(players[i])
             }
-         }
+        }
+
+        return (
+            win.map((items) => {
+                return (
+                    <div className='text-left px-2 text-xl font-bold text-slate-800'>
+                        The WINNER is {items}
+                    </div>
+                     )
+            })
+        )
     }
 
     return (
@@ -140,7 +146,8 @@ const SinglePlayer = () => {
             </div>
             <div className='flex flex-col md:flex-row  gap-5 justify-around items-center bg-gray-300'>
 
-                <div className='flex bg-green-400 w-[90vw] h-[50vh] md:w-[50vw] md:h-[80vh] relative'>
+                <div className='text-xs md:text-base flex bg-green-400 w-[90vw] h-[50vh] md:w-[50vw] md:h-[80vh] relative'>
+
 
                     {players.map((player) => {
                         if (player == 'P1') {
@@ -156,7 +163,7 @@ const SinglePlayer = () => {
                             return <div key={player} className='p-2 border-solid border-2 border-black absolute bottom-2 right-[42vw] md:bottom-2 md:right-[24vw]'>{player}</div>
                         }
                     })}
-                    <div className='flex flex-col md:w-[35vw] md:h-[60vh] w-[60vw] h-[30vh] relative m-auto bg-gray-300'>
+                    <div className='flex flex-col text-xs md:text-base md:w-[35vw] md:h-[60vh] w-[60vw] h-[30vh] relative m-auto bg-gray-300'>
                         {newGame == false && <button className='p-1 md:px-3 border-solid border-2 border-black mx-auto bg-blue-200 absolute bottom-[12vh] right-[25vw] md:bottom-[24vh] md:right-[15vw]' onClick={handleClick}>
                             PLAY
                         </button>}
@@ -226,10 +233,10 @@ const SinglePlayer = () => {
                     <Winner />
 
                     <div className='flex gap-5'>
-                        <div className='p-1 font-extrabold text-l md:text-l text-center border-black w-[18vw] md:w-[6vw] mt-2 bg-slate-900 text-white'>{pname1}</div>
-                        <div className='p-1 font-extrabold text-l md:text-l text-center border-black w-[18vw] md:w-[6vw] mt-2 bg-slate-900 text-white'>P1</div>
-                        <div className='p-1 font-extrabold text-l md:text-l text-center border-black w-[18vw] md:w-[6vw] mt-2 bg-slate-900 text-white'>P2</div>
-                        <div className='p-1 font-extrabold text-l md:text-l text-center border-black w-[18vw] md:w-[6vw] mt-2 bg-slate-900 text-white'>P3</div>
+                        <div className='p-1 font-extrabold text-sm md:text-l text-center border-black w-[18vw] md:w-[6vw] mt-2 bg-slate-900 text-white'>{pname1}</div>
+                        <div className='p-1 font-extrabold text-sm md:text-l text-center border-black w-[18vw] md:w-[6vw] mt-2 bg-slate-900 text-white'>P1</div>
+                        <div className='p-1 font-extrabold text-sm md:text-l text-center border-black w-[18vw] md:w-[6vw] mt-2 bg-slate-900 text-white'>P2</div>
+                        <div className='p-1 font-extrabold text-sm md:text-l text-center border-black w-[18vw] md:w-[6vw] mt-2 bg-slate-900 text-white'>P3</div>
 
                     </div>
 
